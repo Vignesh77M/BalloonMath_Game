@@ -1,0 +1,79 @@
+/* src/styles/balloongame.css - balloon look & responsive grid */
+.bb-root{
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  padding:18px;
+  max-width:980px;
+  margin:10px auto;
+}
+
+.bb-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.bb-left{display:flex;gap:8px;align-items:center}
+.bb-left label{display:flex;flex-direction:column;font-size:13px;color:#374151}
+.bb-left select{margin-top:6px;padding:6px;border-radius:6px;border:1px solid #e5e7eb}
+.bb-start{margin-left:6px;padding:8px 10px;border-radius:8px;border:0;background:#2563eb;color:white;cursor:pointer}
+.bb-stats{display:flex;gap:12px;align-items:center;color:#111827}
+
+/* corrected grid: use minmax(...) not minmin(...) */
+.bb-field{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:18px;
+  min-height:160px;
+  align-items:end;
+}
+
+/* balloon button: circular, centered text */
+.bb-button{
+  position:relative;
+  padding:18px 12px;
+  width:100%;
+  aspect-ratio: 1 / 1;            /* keeps it square and responsive */
+  max-width:220px;
+  margin:0 auto;
+  border-radius:50%;
+  border:0;
+  font-weight:700;
+  font-size:18px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.75), rgba(255,255,255,0.15)),
+              linear-gradient(180deg,#ffdce1,#ff9fb1);
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(30,50,80,0.12);
+  transition: transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+/* different color variants (optional) */
+.bb-button[data-color="blue"]{ background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), rgba(255,255,255,0.2)), linear-gradient(180deg,#e0f2fe,#7dd3fc); color:#07335a }
+.bb-button[data-color="green"]{ background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), rgba(255,255,255,0.2)), linear-gradient(180deg,#dcfce7,#86efac); color:#0b4228 }
+.bb-button[data-color="purple"]{ background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), rgba(255,255,255,0.2)), linear-gradient(180deg,#ede9fe,#c7b3ff); color:#2b0f57 }
+.bb-button[data-color="yellow"]{ background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.9), rgba(255,255,255,0.2)), linear-gradient(180deg,#fff7cc,#ffd78a); color:#6b3f00 }
+
+.bb-button .bb-expr{line-height:1.05; font-size:18px}
+.bb-button .bb-kicker{font-size:12px;margin-top:8px;color:#374151}
+
+/* balloon string below */
+.bb-button .bb-string{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-48px;
+  width:2px;
+  height:50px;
+  background:linear-gradient(180deg,#cbd5e1,#94a3b8);
+  border-radius:2px;
+}
+
+/* popped animation */
+.bb-button.popped{ transform: scale(.25) translateY(-40px); opacity:0; pointer-events:none }
+
+/* highlight correct */
+.bb-highlight{ box-shadow:0 12px 34px rgba(59,130,246,0.22); transform: translateY(-8px) !important; }
+
+/* message and footer */
+.bb-msg{ margin-top:14px; color:#111827; font-weight:600; min-height:22px }
+.bb-footer{ margin-top:12px; color:#6b7280 }
