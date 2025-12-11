@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Math_Ballon_Practice_Accenture/', // 👈 Replace <your-repo-name> with your actual GitHub repo name
+  base: '/BalloonMath_Game/', // 👈 Replace <your-repo-name> with your actual GitHub repo name
   plugins: [
     react({
       babel: {
